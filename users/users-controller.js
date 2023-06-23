@@ -81,6 +81,14 @@ const UsersController = (app) => {
         }
         req.session['currentUser'] = null
 
+
+
+    const home = async (req, res) => {
+        if (req.session['currentUser']) {
+            res.json(req.session['currentUser'])
+            return
+        }
+        req.session['currentUser'] = null
     }
 
     app.post('/users', createUser)
