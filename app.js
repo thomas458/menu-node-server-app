@@ -39,6 +39,11 @@ MealsController(app)
 LikesController(app)
 UsersController(app)
 ReviewsController(app)
+
+
+FollowsController(app)
+
+
 FollowsController(app)
 AlbumController(app)
 app.listen(4000)

@@ -66,11 +66,12 @@ const UsersController = (app) => {
     const findUserById = async (req, res) => {
         const uid = req.params.uid
         const user = await dao.findUserById(uid)
-        if(user) {
+        if (user) {
             res.json(user)
             return
         }
         res.sendStatus(404)
+    }
 
 
     const home = async (req, res) => {
@@ -79,7 +80,6 @@ const UsersController = (app) => {
             return
         }
         req.session['currentUser'] = null
-
     }
 
     app.post('/users', createUser)
