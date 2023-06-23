@@ -17,3 +17,12 @@ export const deleteReview = async (rid) => {
     const status = await reviewsModel.deleteOne({_id: rid})
     return status
 }
+export const getFiveRecentReviews = async () => {
+    try {
+        const reviews = await reviewsModel.find().sort({ time: -1 }).limit(5);
+        return reviews;
+    } catch (error) {
+        // Handle error
+        console.error(error);
+    }
+};
