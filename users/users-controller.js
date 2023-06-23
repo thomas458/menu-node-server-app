@@ -62,6 +62,14 @@ const UsersController = (app) => {
         res.sendStatus(200)
     }
 
+    const home = async (req, res) => {
+        if (req.session['currentUser']) {
+            res.json(req.session['currentUser'])
+            return
+        }
+        req.session['currentUser'] = null
+    }
+
     app.post('/users', createUser)
     app.get('/users', findAllUsers)
     app.delete('/users/:uid', deleteUser)
@@ -71,6 +79,7 @@ const UsersController = (app) => {
     app.post('/login', login)
     app.post('/profile', profile)
     app.post('/logout', logout)
+    app.post('/home', home)
 }
 
 export default UsersController
