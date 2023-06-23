@@ -42,8 +42,6 @@ export default function AlbumController(app) {
 
     res.json(ans);
   };
-
-
   app.post("/api/albums/albumId/:albumId/like", likeAlbum);
   app.get("/api/albums/i/like", findAlbumsILike);
 }
