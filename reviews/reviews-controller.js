@@ -18,17 +18,17 @@ const ReviewsController = (app) => {
         const reviews = await dao.findReviewsByAuthor(author)
         res.json(reviews)
     }
-    const findReviewsByAuthorId = async (req, res) => {
-        const currentUser = req.session['currentUser'];
-        const authorId = currentUser._id;
-        req.params.aid = authorId;
-        const reviews = await dao.findReviewsByAuthor(authorId);
-        res.json(reviews);
+    const deleteReview = async (req, res) => {
+        const reviewIdToDelete = req.params.rid;
+        const status = await dao.deleteReview(reviewIdToDelete);
+        res.json(status);
     }
+
     app.post('/api/reviews', createReview)
     app.get('/api/meals/:idMeal/reviews', findReviewsByMeal)
     app.get('/api/users/:author/reviews', findReviewsByAuthor)
-    app.get('/api/reviews/:aid', findReviewsByAuthorId)
+    app.delete('/api/reviews/:rid', deleteReview)
+
 
 }
 
