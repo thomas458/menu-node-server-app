@@ -6,6 +6,7 @@ import UsersController from "./users/users-controller.js";
 import ReviewsController from "./reviews/reviews-controller.js";
 import cors from 'cors'
 import LikesController from "./likes/likes-controller.js";
+import FollowsController from "./follows/follows-controller.js";
 import session from 'express-session';
 
 const options = {
@@ -37,4 +38,5 @@ MealsController(app)
 LikesController(app)
 UsersController(app)
 ReviewsController(app)
+FollowsController(app)
 app.listen(4000)
