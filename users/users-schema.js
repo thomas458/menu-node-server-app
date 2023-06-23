@@ -8,7 +8,7 @@ const usersSchema = mongoose.Schema({
     email: String,
     dob: Date,
     married: Boolean,
-    type: {type: String, enum: ['ADMIN', 'VERIFIED', 'GUEST']},
+    type: {type: String, enum: ['ADMIN', 'PREMIUM', 'USER', 'GUEST']},
 }, {collection: 'users'})
 
 export default usersSchema

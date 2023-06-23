@@ -8,6 +8,7 @@ import cors from 'cors'
 import LikesController from "./likes/likes-controller.js";
 import FollowsController from "./follows/follows-controller.js";
 import session from 'express-session';
+import AlbumController from "./detailbackend/album-controller.js";
 
 const options = {
     useNewUrlParser: true,
@@ -38,5 +39,8 @@ MealsController(app)
 LikesController(app)
 UsersController(app)
 ReviewsController(app)
+
 FollowsController(app)
+
+AlbumController(app)
 app.listen(4000)
