@@ -62,6 +62,7 @@ const UsersController = (app) => {
         res.sendStatus(200)
     }
 
+
     const findUserById = async (req, res) => {
         const uid = req.params.uid
         const user = await dao.findUserById(uid)
@@ -70,6 +71,14 @@ const UsersController = (app) => {
             return
         }
         res.sendStatus(404)
+
+
+    const home = async (req, res) => {
+        if (req.session['currentUser']) {
+            res.json(req.session['currentUser'])
+            return
+        }
+        req.session['currentUser'] = null
 
     }
 
@@ -83,6 +92,7 @@ const UsersController = (app) => {
     app.post('/login', login)
     app.get('/profile', profile)
     app.post('/logout', logout)
+    app.post('/home', home)
 }
 
 export default UsersController
