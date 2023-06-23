@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/thomas458/menu-node-server-app#readme",
   "dependencies": {
+    "@remix-run/router": "^1.6.3",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
