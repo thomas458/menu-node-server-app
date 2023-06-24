@@ -1,5 +1,4 @@
 import reviewsModel from "./reviews-model.js";
-import mealsModel from "../meals/meals-model.js";
 
 export const createReview = (review) =>
     reviewsModel.create(review)
@@ -17,7 +16,7 @@ export const findReviewsByAuthor = (author) => {
 
 export const deleteReview = async (rid) => {
     const status = await reviewsModel.deleteOne({_id: rid})
-    return status
+    return status;
 }
 export const getFiveRecentReviews = async () => {
     try {
