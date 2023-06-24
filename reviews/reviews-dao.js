@@ -10,8 +10,10 @@ export const findReviewsByMeal = (idMeal) =>
         .populate('author')
         .exec()
 
-export const findReviewsByAuthor = (author) =>
-    reviewsModel.find({author})
+export const findReviewsByAuthor = (author) => {
+    const reviews = reviewsModel.find({author}).sort({time: -1}).limit(5);
+    return reviews;
+}
 
 export const deleteReview = async (rid) => {
     const status = await reviewsModel.deleteOne({_id: rid})
@@ -19,7 +21,7 @@ export const deleteReview = async (rid) => {
 }
 export const getFiveRecentReviews = async () => {
     try {
-        const reviews = await reviewsModel.find().sort({ time: -1 }).limit(5);
+        const reviews = await reviewsModel.find().sort({time: -1}).limit(5);
         return reviews;
     } catch (error) {
         // Handle error
