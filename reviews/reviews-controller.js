@@ -1,4 +1,5 @@
 import * as dao from "./reviews-dao.js"
+import {getFiveRecentReviews} from "./reviews-dao.js";
 
 const ReviewsController = (app) => {
     const createReview = async (req, res) => {
@@ -23,11 +24,21 @@ const ReviewsController = (app) => {
         const status = await dao.deleteReview(reviewIdToDelete);
         res.json(status);
     }
+    const getFiveRecentReviews = async (req, res) => {
+        try {
+            const reviews = await dao.getFiveRecentReviews();
+            res.json(reviews);
+        } catch (error) {
+            // Handle error
+            console.error(error);
+        }
+    };
 
     app.post('/api/reviews', createReview)
     app.get('/api/meals/:idMeal/reviews', findReviewsByMeal)
     app.get('/api/users/:author/reviews', findReviewsByAuthor)
     app.delete('/api/reviews/:rid', deleteReview)
+    app.get('/api/reviews/recent', getFiveRecentReviews)
 
 
 }
