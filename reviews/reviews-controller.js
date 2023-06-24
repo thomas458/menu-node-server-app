@@ -19,6 +19,7 @@ const ReviewsController = (app) => {
         const reviews = await dao.findReviewsByAuthor(author)
         res.json(reviews)
     }
+
     const deleteReview = async (req, res) => {
         const reviewIdToDelete = req.params.rid;
         const status = await dao.deleteReview(reviewIdToDelete);

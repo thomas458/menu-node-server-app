@@ -10,7 +10,8 @@ const reviewsSchema = mongoose.Schema({
     time: {
         type: Date,
         default: Date.now
-    }
+    },
+    details: JSON
 }, {collection: 'reviews'})
 
 export default reviewsSchema
