@@ -51,7 +51,14 @@ const UsersController = (app) => {
 
     const profile = async (req, res) => {
         if (req.session['currentUser']) {
-            res.json(req.session['currentUser'])
+            //res.json(req.session['currentUser'])
+            const user = await dao.findUserById(req.session['currentUser']._id)
+            if (user) {
+                //console.log(user)
+                res.json(user)
+                return
+            }
+
             return
         }
         res.sendStatus(403)
