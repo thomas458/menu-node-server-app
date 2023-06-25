@@ -74,6 +74,7 @@ const UsersController = (app) => {
     }
 
 
+
     const home = async (req, res) => {
         if (req.session['currentUser']) {
             res.json(req.session['currentUser'])
