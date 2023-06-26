@@ -26,16 +26,32 @@ const app = express()
 
 const allowedOrigins = ['https://main--sprightly-unicorn-2872d1.netlify.app','http://localhost:3000'];
 
+app.set("trust proxy", 1);
+
 app.use(cors({
     credentials: true,
     origin: allowedOrigins,
 }))
-app.use(session({
-    secret: 'should be environment variable',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {secure: false}
-}))
+// app.use(session({
+//     secret: 'should be environment variable',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {secure: false}
+// }))
+
+app.use(
+    session({
+        secret: "any string",
+        resave: false,
+        proxy: true,
+        saveUninitialized: false,
+        cookie: {
+            sameSite: "none",
+            secure: true,
+        },
+    })
+);
+
 app.use(express.json())
 HelloController(app)
 MealsController(app)
