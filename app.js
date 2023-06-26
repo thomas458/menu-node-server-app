@@ -23,9 +23,12 @@ const options = {
 mongoose.connect("mongodb+srv://chenyanghao615:ITLkai2a5i9vFfMY@cluster0.75nvzso.mongodb.net/project", options)
 
 const app = express()
+
+const allowedOrigins = ['http://localhost:3000'];
+
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: allowedOrigins,
 }))
 app.use(session({
     secret: 'should be environment variable',
@@ -46,4 +49,4 @@ FollowsController(app)
 
 FollowsController(app)
 AlbumController(app)
-app.listen(4000)
+app.listen(process.env.PORT ||4000)
