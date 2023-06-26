@@ -24,7 +24,7 @@ mongoose.connect("mongodb+srv://chenyanghao615:ITLkai2a5i9vFfMY@cluster0.75nvzso
 
 const app = express()
 
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['https://main--sprightly-unicorn-2872d1.netlify.app','http://localhost:3000'];
 
 app.use(cors({
     credentials: true,
